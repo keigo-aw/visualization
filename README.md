@@ -1,5 +1,5 @@
-## Information Visualization
+## Introduction to Sensor Technology (Arduino)
 
-Learning Outcomes
+**Learning Outcomes**
 
-1. Identify and explain the different technologies that make interactive maps and data visualization possible.
+* Identify and explain the different technologies that make interactive maps and data visualization possible.
