@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>2b: Introduction to data viz</title>
+
+        <meta name="description" content="CSC3007 Data Viz, Introduction">
+        <meta name="author" content="Chan Chi-Loong, V/R">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/night.css" id="theme">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <!-- Theme used for syntax highlighted code -->
+        <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+            document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+
+                <section data-state="alert" data-transition="zoom">       
+                    <h1 class="shadowfont white">CSC3007 Information Visualization</h1>       
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Background</h2>
+                        <ul>
+                        <li>CSC Year3, Tri3 module.</li>
+                        <li><p>The course material is split up into two components &mdash; <b>theory</b> and <b>code</b>.</p></li>
+                        <li><p>Some web development is a technical requirement for this course. It is expected that students know <a href="https://www.w3schools.com/">HTML / CSS / JS</a>.</p></li>
+                        <li><p>We'll be using <a href="https://d3js.org/">D3 (Data Driven Documents)</a>, the defacto data visualization library for the web.</p></li>             
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Theory and code</h3>
+                        <p>The course material is split up into two components &mdash; <b>theory</b> and <b>code</b>.</p>
+                        <p>In the <b>theory</b> portion, we will go through the research paired with lots of real-life case examples.</p>
+                        <p>In the <b>code</b> portion, we will be building interactive data visualizations for the web.</p>
+                    </section>
+
+                    <section>
+                        <h3>On technology</h3>
+                        <p>Visualizations can be built with all kinds of software tool / cloud-based platforms.</p>
+                        <p>However, for an interactive visualization course I will going through how to do it natively for the web.</p>
+                        <p>We'll be using <a href="https://d3js.org/">D3 (Data Driven Documents)</a>, the defacto data visualization library for the web.</p>
+                    </section> 
+
+                    <section>
+                        <h3>Why D3</h3>
+                        <ul>
+                        <li>If you're interested in analytics, Excel / Tableau / PowerBI are good non-coding choices.</li>
+                        <li>If you're familiar with data science languages, Python or R has graphing libraries (ggplot2, plotly, mathlibplot, etc.)</li>
+                        <li>D3 is used because you want to <b>build beautiful interactive visualizations</b> for the web. You can go really deep to get the interactions you want.</li>
+                        <li>It also has comprehensive built-in <b>design patterns for visualizations</b>, like geo projections, force simulations, hierarchies, etc.</li>
+                        <li>Lastly, it is open source and free.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>How to build for web</h3>
+                        <ul>
+                        <li>For web visualization there are many libraries / tools / platforms beyond D3.</li>
+                        <li>If you are pressed for time for a standard chart type, it might be easier to use other tools / libraries <a href="https://github.com/wbkd/awesome-d3">built on top of D3</a>.</li>
+                        <li>You can also use other libraries (leaflet, highcharts, etc.) to build the components you need.</li>
+                        <li>There are even full platforms - Mapbox, Cesium, etc. that will allow you to host and build on top of those platforms.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Course expectations</h3>
+                        <p>Some web development is a technical requirement for this course. It is expected that you know <b>HTML / CSS / JS</b>.</p>
+                        <p>I might run through some recap refreshers, but it will be quick.</p>
+                        <p>If you are weak in this area you will have to do your own reading and self-revision.</p>
+                        <hr/>
+                        <p class="smallfont">By now you should know how to write some web stuff. There are tons of tutorials on the web.</p>
+                        <p class="smallfont">If you want to use more complicated frameworks / architectures to build your visualizations, please do go ahead. But it is not neccessary.</p>
+                    </section>
+
+                    <section>
+                        <h3>Course expectations 2</h3>
+                        <p>On the JS side, you should also know how to pull data from APIs (AJAX), data formats like JSON (GeoJSON, TopoJSON).</p>
+                        <p>Beyond HTML / CSS / JS, we will also be using <b>Git</b>, a modern version control tool.</p>
+                        <p>Students will be publishing their assignments and work on <b>GitHub</b> and <b>GitPages</b>.</p>
+                        <hr/>
+                        <p class="smallfont">If you do not have a GitHub account, please do sign up for one. You should have one by now.</p>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Objectives</h2>
+                    <ul>
+                    <li>Basic understanding of Information Visualization Concepts.</li>
+                    <li>Learn to build force diagrams and network maps in D3.</li>
+                    </ul>
+                </section>
+              
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Introduction to Data Viz</h1>
+                    <h3>Why data visualization?</h3>
+                </section>
+                
+                <section>
+                    <h2>Wiki definition</h2>
+                    <p>To communicate data / information clearly and effectively by encoding it as graphical visual objects (e.g. points, lines).</p>
+                </section>
+                
+                <section>
+                    <section>
+                        <h2>Examples</h2>
+                        <div>
+                            <a href="https://elections.viz.sg/" target="_blank"><img src="img/SGelections.jpg"></a>
+                            <a href="https://covid.viz.sg/" target="_blank"><img src="img/covidsg.jpg"></a>
+                            <a href="https://viz.vslashr.com/earth/" target="_blank"><img src="img/earthglobe.jpg"></a>
+                        </div>   
+                    </section>
+
+                    <section>
+                        <h3>Historical viz</h3>
+                        <a href="img/Minard.png" target="_blank"><img src="img/Minard.png"></a>
+                        <p class="smallfont"><a href="https://en.wikipedia.org/wiki/Charles_Joseph_Minard" target="_blank">Charles Joseph Minard's</a> 1869 diagram of Napoleonic France's invasion of Russia.</p>
+                        <p class="smallfont">It shows the number of men in Napoleon’s 1812 Russian campaign army, their movements, as well as the temperature they encountered on the return path.</p>
+                    </section>    
+
+                    <section>
+                        <h3>Historical viz 2</h3>
+                        <a href="img/1024px-Snow-cholera-map-1.jpg" target="_blank"><img src="img/1024px-Snow-cholera-map-1.jpg" width="600"></a>
+                        <p class="smallfont"><a href="https://en.wikipedia.org/wiki/John_Snow" target="_blank">John Snow's</a> map of the 1854 cholera outbreak in Soho, which helped debunk the then-dominant miasma theory.</p>
+                    </section>           
+                </section>
+
+                <section>
+                    <h3>Exploratory or explanatory analysis?</h3>
+                    <img src="img/data_viz_process.png">
+                    <p class="smallfont">A 3rd category: Engineering a data visualization product / tool to automate exploratory / explanatory analysis.</p>
+                </section>
+                
+                <section>
+                    <h3>Visualization analysis</h3>
+                    <img src="img/data-task-idiom.jpg">
+                    <ul>
+                    <li><b>What:</b><g class="fragment"> What data does the user see?</g></li>
+                    <li><b>Why:</b><g class="fragment"> Why does the user want to use a viz tool?<g></li>
+                    <li><b>How:</b><g class="fragment"> How is the visual encoding and design choices chosen?<g></li>
+                    </ul>
+                    <p class="fragment">These three questions form the <b>data &mdash; task &mdash; idiom</b> trio.</p>
+                </section>
+                
+                <section>
+                    <h2>A broader definition</h2>
+                    <p>Computer-based visualization systems provide visual representations of datasets designed to help people carry out tasks more effectively.</p>
+                    <hr/>
+                    <p class="smallfont">Reading: <a href="https://www.pnas.org/content/pnas/116/6/1857.full.pdf">Data visualization literacy framework</a></p>
+                    <p class="smallfont">Reading: <a href="https://www.amazon.sg/Visualization-Analysis-Design-Tamara-Munzner/dp/1466508914">Chapter 1, Visualization Analysis and Design (Tamara Munzner)</a></p>
+                </section>
+                              					
+                <section data-state="alert" data-transition="zoom">
+                    <h1><a href="lab_sample.html" target="_blank">6b: Force diagrams</a></h1>
+                </section>
+
+                <section>
+                    <h3>Basic template</h3>
+                    <p>As usual, let's start with a simple HTML template.</p>
+                    
+                    <pre class="snippet-header"><code>
+&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+  &lt;meta charset="UTF-8">
+  &lt;style>&lt;/style>
+&lt;/head>
+&lt;body>
+  &lt;svg>&lt;/svg>
+&lt;script src="https://d3js.org/d3.v7.min.js">&lt;/script>
+&lt;/body>
+&lt;/html>
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <p>Add in this D3 code.</p>
+                    <pre class="snippet-body"><code>
+&lt;script>
+let width = 800,
+    height = 800;
+
+let svg = d3.select("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+let data = [];
+for (let i=0; i < 20; i++) {
+    let obj = {};
+    data.push(obj);
+}
+
+let node = svg.append("g")
+  .attr("id", "nodes")
+  .selectAll("circle")
+  .data(data)
+  .enter()
+  .append("circle")
+    .attr("r", 25)
+    .style("fill", "steelblue");
+&lt;/script>
+                    </code></pre>
+                </section>
+
+                <section>
+                    <p>We created a bunch of circles, but we need to space them using D3's force simulation.</p>
+                    <pre><code>
+&lt;script>
+...
+  let simulation = d3.forceSimulation()
+    .nodes(data)
+    .force("charge", d3.forceManyBody().strength(10))
+    .force("collide", d3.forceCollide().strength(1).radius(10))
+    .force("r", d3.forceRadial(200, width /2, height /2).strength(0.1))
+    .alphaMin(0.1)
+    .on("tick", d => {
+        node
+        .attr("cx", d => d.x)
+        .attr("cy", d => d.y);
+    });
+...
+&lt;/script>
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Force simulation</h3>
+                    <p>Play with the values in the force simulation to get an intuitive feel of what the code does.</p>
+                    <p>Can you tweak the amount of cicles to 100, reduce radius of circles, move the center of gravity, change the collision radius?</p>
+                    <p>Why do the circles seem to move from the (0,0) position? How do we fix this?</p>
+                    <hr/>
+                    <p class="smallfont"><a href="https://www.d3indepth.com/force-layout/">Force layout: parameters</a></p>
+                </section>
+
+                <section>
+                    <h3>Add drag interactivity</h3>
+                    
+                    <pre><code>
+&lt;script>
+...
+.call(d3.drag()
+    .on("start", dragstarted)
+    .on("drag", dragged)
+    .on("end", dragended));
+
+function dragstarted(event, d) {
+  if (!event.active) simulation.alphaTarget(0.3).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+}
+
+function dragged(event, d) {
+  d.fx = event.x;
+  d.fy = event.y;
+}
+
+function dragended(event, d) {
+  if (!event.active) simulation.alphaTarget(0);
+  d.fx = null;
+  d.fy = null;
+}
+...
+&lt;/script>
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Note: The call function is added to the appended circles. With drag added, should be easier to see what some of the parameters do, like d3.forceManyBody.</p>
+                </section>
+
+                <section>
+                    <h3>3 classes of nodes</h3>
+                    <p>Let's say our data has 3 classes of nodes. Randomly generating them:</p>
+                    <pre><code>
+for (let i=0; i < 20; i++) {
+    let obj = {};
+    obj.class = Math.floor(Math.random() * 3);
+    data.push(obj);
+}
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Can you give each type its own color?</p>
+                </section>
+
+                <section>
+                    <h3>Different centre position</h3>
+                    <p>Let's define a different centre x position for  each class of nodes.</p>
+                    <pre><code>
+let xPosition = d3.scaleOrdinal()
+  .domain([0, 1, 2])
+  .range([150, 400, 650]);
+
+let simulation = d3.forceSimulation()
+.nodes(data)
+.force("x", d3.forceX().strength(0.5).x( d => xPosition(d.class) ))
+.force("y", d3.forceY().strength(0.2).y( height /2 ))
+.force("charge", d3.forceManyBody().strength(0))
+.force("collide", d3.forceCollide().strength(0.1).radius(15))
+.on("tick", d => {
+    node
+    .attr("cx", d => d.x)
+    .attr("cy", d => d.y);
+});
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Force change on the fly!</h3>
+                    <pre><code>
+&lt;button id="group1">Multiple Groups&lt;/button>
+&lt;button id="group2">One Center&lt;/button>
+                    </code></pre>
+                    <pre><code>
+d3.select("#group1").on("click", function() {
+    simulation
+    .force("x", d3.forceX().strength(0.5).x(d => xPosition(d.class)))
+    .force("y", d3.forceY().strength(0.2).y( height /2 ))
+    .alphaTarget(0.3)
+    .restart();
+})
+
+d3.select("#group2").on("click", function() {
+    simulation
+    .force("x", d3.forceX().strength(0.1).x(400))
+    .force("y", d3.forceY().strength(0.1).y(400))
+    .alphaTarget(0.3)
+    .restart();
+})                    
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Force changes are how <a href="https://showcase.vslashr.com/virus/" target="_blank">simulations like this</a> are done.</p>
+                </section>
+
+                <section>
+                    <h3>Add links data</h3>
+                    <p>We'll need to give each node an id, and specify a source and target for each link.</p>
+                    <pre><code>
+let data = [];
+for (let i=0; i < 20; i++) {
+    let obj = {x: width/2, y: height/2};
+    obj.id = "node" + i;
+    obj.class = Math.floor(Math.random() * 3);
+    data.push(obj);
+}
+
+let links = [];
+for (let i=0; i < 10; i++) {
+    let obj = {};
+    obj.source = "node" + Math.floor(Math.random() * 20);
+    obj.target = "node" + Math.floor(Math.random() * 20);
+    links.push(obj);
+}
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Console.log <b>data</b> and <b>links</b> arrays to inspect the structure.</p>
+                </section>
+                
+                <section>
+                    <h3>Draw the links</h3>
+                    <p>We'll add the link paths to the SVG. No path data yet, which we'll update in the simulation on tick function.</p>
+                    <pre><code>
+let linkpath = svg.append("g")
+    .attr("id", "links")
+    .selectAll("path")
+    .data(links)
+  .enter()
+    .append("path")
+    .attr("fill", "none")
+    .attr("stroke", "black");
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Update force simulation</h3>
+                    <p>Putting everything together.</p>
+                    <pre><code>
+    let simulation = d3.forceSimulation()
+    .nodes(data)
+    .force("x", d3.forceX().strength(0.5).x( width /2 ))
+    .force("y", d3.forceY().strength(0.2).y( height /2 ))
+    .force("link", d3.forceLink(links).id(d => d.id))
+    .force("charge", d3.forceManyBody().strength(20))
+    .force("collide", d3.forceCollide().strength(1).radius(30))
+    .on("tick", d => {
+        node
+        .attr("cx", d => d.x)
+        .attr("cy", d => d.y);
+        
+        linkpath
+        .attr("d", d => "M" + d.source.x + "," + d.source.y + " " + d.target.x + "," + d.target.y);
+    });
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Console.log <b>simulation.nodes()</b> and <b>simulation.force("link").links()</b> to inspect the structure.</p>
+                </section>
+
+                <section>
+                    <h3>Link parameters</h3>
+                    <p>Links can have distances and strengths. Play around with the properties.</p>
+                    <pre><code>
+...
+.force("link", d3.forceLink(links)
+    .id(d => d.id)
+    .distance(50)
+    .strength(0.5)
+ )
+...
+                    </code></pre>
+                    <hr/>
+                    <p class="smallfont">Can you change the link path to be a curved path?</p>
+                </section>
+
+
+                <section data-state="alert" data-transition="zoom">
+                    <h1 class="shadowfont white">Assignment 4</h1>
+                    <h3>Force network diagram</h3>
+                </section>
+
+                <section>
+                    <h3>Setup</h3>
+                    <p>To be completed before <b>31-12-2022</b>(Sat) 2359hrs</p>
+                    <ul>
+                    <li>This repo link will be of the format https://<b>&lt;username&gt;</b>.github.io/CSC3007-assignment4</li>
+                    <li>In the repo create a basic <b>index.html</b> file, and make it visible on GitHub repo pages (it's under the settings tab, under GitHub pages).</li>
+                    <li>You can put your CSS style tags, HTML and JS script code into one file, or organize them into files/directories.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Why: Task</h3>
+                    <p>A force network diagram is a very good way of showing relationships between cases.</p>
+                    <p>In this case, we're visualizing just a small cluster of cases (20 cases) during the Covid situation last year.</p>
+                    <img src="assignments/assignment4.jpg"/>
+                    <p class="smallfont">Sample screenshot of cases in sample data</p>
+                </section>
+
+                <section>
+                    <h3>What: Dataset</h3>
+                    <ul>
+                    <li>A very small slice of the dataset for this <a href="https://covid.viz.sg/" target="_blank">Covid tracing visualization</a>.</li>
+                    <li>You can find the assignment dataset for the cases <a href="assignments/cases-sample.json">here</a>.</li>
+                    <li>Similarly, you can find the assignment dataset for the links <a href="assignments/links-sample.json">here</a>.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>How: Encoding</h3>
+                    <p>The main visualization encoding has been chosen - force network diagram.</p>
+                    <p>You are required to show which cases are <b>male</b>, and which are <b>female</b>.</p>
+                    <p>Beyond that you may theme the cases and links however way you choose.</p>
+                </section>
+
+                <section>
+                    <h3>Template starter</h3>
+                    <p>I've included a simple <a href="assignments/assignment4-starter.html" target="_blank">template D3 starter</a>.</p>
+                    <p>A lot more basic than the previous ones, except that I've formatted the links JSON into the format the D3 requires for the force network diagram.</p>
+                </section>
+
+                <section>
+                    <h3>Extra challenge</h3>
+                    <p>Interactivity: tooltips to print out the information in the nodes.</p>
+                    <p>Interactivity: mouse hover to show selection of nodes.</p>
+                </section>
+
+                <section>
+                    <h3>Extra, extra challenge</h3>
+                    <p>Add in at least one more category (use a button toggle) to visualize beyond gender, e.g. age, vaccination status, etc.</p>
+                    <p>Either (and/or):</p>
+                    <ul>
+                    <li>Draw arrows on links to show chain of infection.</li>
+                    <li>Experiment with nicer links that are not just straight paths.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Questions?</h2>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
