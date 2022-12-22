@@ -1,1 +1,1 @@
-# visualization
+# Introduction to Information Visualization
