@@ -1,4 +1,4 @@
-## Introduction to Sensor Technology (Arduino)
+## Introduction to Information Visualization
 
 **Learning Outcomes**
 
