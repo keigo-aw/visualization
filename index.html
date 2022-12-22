@@ -107,11 +107,16 @@
                 </section>
 
                 <section>
-                    <h2>Objectives</h2>
-                    <ul>
-                    <li>Basic understanding of Information Visualization Concepts.</li>
-                    <li>Learn to build force diagrams and network maps in D3.</li>
-                    </ul>
+                    <section>
+                        <h2>Objectives</h2>
+                        <ul>
+                        <li>Identify and explain the different technologies that make interactive maps and data visualization possible.</li>
+                        <li>Learn to build force diagrams and network maps in D3.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>https://keigo-aw.github.io/visualization/</h4>                   
+                    </section>
                 </section>
               
                 <section data-state="alert" data-transition="zoom">
@@ -151,7 +156,8 @@
                 <section>
                     <h3>Exploratory or explanatory analysis?</h3>
                     <img src="img/data_viz_process.png">
-                    <p class="smallfont">A 3rd category: Engineering a data visualization product / tool to automate exploratory / explanatory analysis.</p>
+                    <div class="fragment"><p class="smallfont">Exploratory is turning over 100 rocks to find one or two gems. <br>Explanatory is showing those one or two gems to someone else.</a>
+                    <a href="https://www.storytellingwithdata.com/blog/2014/04/exploratory-vs-explanatory-analysis" target="_blank"><p class="smallfont">Cole Nussbaumer Knaflic, the author of “Storytelling with Data,”</p></a></div>
                 </section>
                 
                 <section>
@@ -165,6 +171,30 @@
                     <p class="fragment">These three questions form the <b>data &mdash; task &mdash; idiom</b> trio.</p>
                 </section>
                 
+                <section>
+                    <h2>GE Elections</h2>
+                    <div>
+                        <a href="https://elections.viz.sg/" target="_blank"><img src="img/SGelections.jpg"></a>                       
+                    </div>
+                    <ul>
+                    <li><b>What:</b><g class="fragment"> GE Elections Results</g></li>
+                    <li><b>Why:</b><g class="fragment"> A choropleth visualization shows the GE results of each subsdistricts in SG and its trends.<g></li>
+                    <li><b>How:</b><g class="fragment"> A choropleth map.<g></li>
+                    </ul>   
+                </section>
+
+                <section>
+                    <h2>CVOID Tracing</h2>
+                    <div>
+                         <a href="https://covid.viz.sg/" target="_blank"><img src="img/covidsg.jpg"></a>
+                         <ul>
+                        <li><b>What:</b><g class="fragment"> Covid Tracing</g></li>
+                        <li><b>Why:</b><g class="fragment"> A force network diagram is a very good way of showing relationships between cases.<g></li>
+                        <li><b>How:</b><g class="fragment"> A force network diagram<g></li>
+                    </ul>  
+                    </div>   
+                </section>
+
                 <section>
                     <h2>A broader definition</h2>
                     <p>Computer-based visualization systems provide visual representations of datasets designed to help people carry out tasks more effectively.</p>
@@ -431,7 +461,28 @@ let linkpath = svg.append("g")
                     <p class="smallfont">Can you change the link path to be a curved path?</p>
                 </section>
 
+                <section>
+                <h3>How to learn D3</h3>
+                    <p><a href="https://wattenberger.com/blog/d3" target="_blank">How to learn D3.js</a>, Amelia Watterberger</p>
+                    <p><a href="https://www.d3-graph-gallery.com/" target="_blank">D3 Graph Gallery</a>, Yan Holtz</p>
+                    <p><a href="https://observablehq.com/" target="_blank">ObservableHQ</a></p>
+                </section>
 
+                <section>
+                    <h3>Animation and 3D libraries</h3>
+                    <p>Animation</p>
+                    <ul>
+                    <li><a href="https://greensock.com/gsap/" target="_blank">GSAP</a></li>
+                    <li><a href="https://animejs.com/" target="_blank">Anime.js</a></li>
+                    </ul>
+                    <hr/>
+                    <p>3D</p>
+                    <ul>
+                    <li><a href="https://threejs.org/" target="_blank">three.js</a></li>
+                    <li><a href="https://www.babylonjs.com/" target="_blank">Babylon</a></li>
+                    </ul>
+                </section>
+                
                 <section data-state="alert" data-transition="zoom">
                     <h1 class="shadowfont white">Assignment 4</h1>
                     <h3>Force network diagram</h3>
